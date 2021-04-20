@@ -1,8 +1,6 @@
 /*
 # This project is libre, and licenced under the terms of the
-# DO WHAT THE FUCK YOU WANT TO PUBLIC LICENCE, version 3.1,
-# as published by dtf on July 2019. See the COPYING file or
-# https://ph.dtf.wtf/w/wtfpl/#version-3-1 for more details.
+# DO WHAT THE FUCK YOU WANT TO PUBLIC LICENCE, version 3,
 
 ████████╗██╗  ██╗███████╗    ███████╗██╗     ██╗   ██╗███████╗██╗  ██╗
 ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝██║     ██║   ██║██╔════╝██║  ██║
@@ -68,9 +66,9 @@ void loop()
     if (timeNow > timeNext)
     {
         measuredDistance = usonic.Distance();
-        // Using both negative and positiv diffs
+        // Using both negative and positive diffs
         // as sometimes ultrasonic being mixed up
-        // by kitty fur and and outputs greater distances
+        // by kitty's fur and and outputs greater distances
         distanceDiff = labs(etalonDistance - measuredDistance);
         timeNext = timeNow + WAIT_FOR_IT;
 
