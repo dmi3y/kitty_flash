@@ -101,19 +101,22 @@ void loop()
             }
 
             // Kitty Flash state machine starts here //
-            if (distanceDiff < WISKERS_REACH && flushState < IM_ANNOYED)
+            if (flushState < IM_ANNOYED)
             {
-                meowsFromInterception = 0;
-                flushState = IM_PURRING;
-            }
-            else if (distanceDiff > WISKERS_REACH && flushState < IM_ANNOYED)
-            {
-                flushState = IM_PERKING;
-                meowsFromInterception += 1;
-
-                if (meowsFromInterception > SOMETHING_GOING_ON)
+                if (distanceDiff < WISKERS_REACH)
                 {
-                    flushState = IM_ANNOYED;
+                    meowsFromInterception = 0;
+                    flushState = IM_PURRING;
+                }
+                else
+                {
+                    flushState = IM_PERKING;
+                    meowsFromInterception += 1;
+
+                    if (meowsFromInterception > SOMETHING_GOING_ON)
+                    {
+                        flushState = IM_ANNOYED;
+                    }
                 }
             }
             else if (flushState == IM_ANNOYED)
@@ -151,8 +154,8 @@ void loop()
                 }
                 meowsInFlush += 1;
             }
+            // Kitty Flash state machine ends here //
         }
-        // Kitty Flash state machine ends here //
 
         meowsFromFlush += 1;
         Serial.print("STATE: ");
