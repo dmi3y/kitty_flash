@@ -25,11 +25,12 @@
 #define MEOW 1000ul
 #define HOLD_MY_MYLK MEOW * 10
 #define WAIT_FOR_IT MEOW * 1
-#define MEOWS_TO_ADJUST 5
+#define MEOWS_TO_ADJUST 10
 #define FLUSH_TIME 10
 #define SOMETHING_GOING_ON 2
 #define WISKERS_REACH 9
-#define ANNOYED_AND_FURIOUS 60
+#define ANNOYED_AND_FURIOUS 30
+#define ANNOYED_AND_BORED 60
 
 #define IM_PURRING 0 // waiting
 #define IM_PERKING 1 // target intersepted
@@ -38,6 +39,7 @@
 
 long meowsFromFlush = 0;
 long meowsFromAnnoyed = 0;
+long meowsFromBored = 0;
 long meowsFromInterception = 0;
 long meowsInFlush = 0;
 long measuredDistance = -1;
@@ -76,7 +78,10 @@ void loop()
         {
             // Give ultrasonic time to adjust
             etalonDistance += measuredDistance;
+            // Everything meow reset!
             meowsFromInterception = 0;
+            meowsFromAnnoyed = 0;
+            meowsFromBored = 0;
             meowsInFlush = 0;
         }
         else
@@ -85,12 +90,12 @@ void loop()
             {
                 // First MEOWS_TO_ADJUST cycles after the flush
                 // Etalon distance to capture interceptions
-                Serial.print("ETALON DISTANCE: ");
                 etalonDistance = etalonDistance / MEOWS_TO_ADJUST;
-                Serial.println(etalonDistance);
             }
             else
             {
+                Serial.print("ETALON DISTANCE: ");
+                Serial.println(etalonDistance);
                 Serial.print("MEASURED DISTANCE: ");
                 Serial.println(measuredDistance);
             }
@@ -105,7 +110,6 @@ void loop()
             {
                 flushState = IM_PERKING;
                 meowsFromInterception += 1;
-                meowsFromAnnoyed = 0;
 
                 if (meowsFromInterception > SOMETHING_GOING_ON)
                 {
@@ -114,7 +118,7 @@ void loop()
             }
             else if (flushState == IM_ANNOYED)
             {
-                if (distanceDiff < WISKERS_REACH)
+                if (distanceDiff < WISKERS_REACH || meowsFromBored > ANNOYED_AND_BORED)
                 {
                     meowsFromAnnoyed += 1;
                     Serial.print("MEOWS FROM ANNOYED: ");
@@ -127,6 +131,7 @@ void loop()
                 else
                 {
                     meowsFromAnnoyed = 0;
+                    meowsFromBored += 1;
                 }
             }
             else if (flushState == IM_FURIOUS)
