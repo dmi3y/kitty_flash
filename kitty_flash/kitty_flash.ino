@@ -29,8 +29,8 @@
 #define FLUSH_TIME 10
 #define SOMETHING_GOING_ON 2
 #define WISKERS_REACH 9
-#define ANNOYED_AND_FURIOUS 30
-#define ANNOYED_AND_BORED 60
+#define ANNOYED_AND_FURIOUS 60
+#define ANNOYED_AND_BORED 1200
 
 #define IM_PURRING 0 // waiting
 #define IM_PERKING 1 // target intersepted
