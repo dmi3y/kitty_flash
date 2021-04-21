@@ -1,6 +1,6 @@
 /*
 # This project is libre, and licenced under the terms of the
-# DO WHAT THE FUCK YOU WANT TO PUBLIC LICENCE, version 3,
+# DO WHAT THE FUCK YOU WANT TO PUBLIC LICENCE, version whatever,
 
 ████████╗██╗  ██╗███████╗    ███████╗██╗     ██╗   ██╗███████╗██╗  ██╗
 ╚══██╔══╝██║  ██║██╔════╝    ██╔════╝██║     ██║   ██║██╔════╝██║  ██║
