@@ -14,7 +14,7 @@ Project to support kitties to flush things.
 
 3. And finaly after it furious it gets back to purring.
 
-Kitty flush cycle complete!
+Kitty flash cycle complete!
 
 ### Licence
 
