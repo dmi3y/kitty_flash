@@ -13,9 +13,9 @@
                     -(((---(((--------
 */
 
-#include "pitches.h"
 #include <Servo.h>
 #include "SR04.h"
+#include "pitches.h"
 
 #define TRIG_PIN 12
 #define ECHO_PIN 11
