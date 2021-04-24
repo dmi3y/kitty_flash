@@ -1,4 +1,4 @@
-## Kitty Fash
+## Kitty Flash
 
 > Flush 'em all!
 
